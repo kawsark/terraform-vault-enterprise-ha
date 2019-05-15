@@ -32,6 +32,7 @@ terraform apply
 Below are the recommendations from [Vault Production hardening guidelines](https://learn.hashicorp.com/vault/operations/production-hardening). This repo attempts to implement most of them.
 
 - End-to-End TLS: _Pending implementation_.
+  - Client to Vault via ALB is secured via HTTPS
 - Single Tenancy: Yes - Vault is the main service running on EC2.
 - Firewall traffic: Yes - Implemented AWS Security Groups 
 - Disable SSH / Remote Desktop: _Pending implementation_.
