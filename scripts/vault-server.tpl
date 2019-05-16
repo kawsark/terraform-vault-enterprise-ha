@@ -79,11 +79,8 @@ vault_consul_is_up
 
 #Initialize and unseal Vault:
 sleep 10
-vault operator init -format=json -n 1 -t 1 > /opt/vault/vault.txt
-cat /opt/vault/vault.txt | python -c 'import sys,json;print json.load(sys.stdin)["unseal_keys_b64"]' | cut -d\' -f2 > /opt/vault/unseal_key
+vault operator init -format=json -recovery-shares=1 -recovery-threshold=1 > /opt/vault/vault.txt
 cat /opt/vault/vault.txt | python -c 'import sys,json;print json.load(sys.stdin)["root_token"]' | cut -d\' -f2 > /opt/vault/root_token
-vault operator unseal $(cat /opt/vault/unseal_key)
-consul kv put vault/unseal_key $(cat /opt/vault/unseal_key)
 vault status
 
 # Proceed with additional vault configuration:

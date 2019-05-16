@@ -79,9 +79,8 @@ systemctl start vault.service
 # Wait for vault to register with consul
 vault_consul_is_up
 
-#Initialize and unseal Vault:
+#Check Vault status
 sleep 60
-vault operator unseal $(consul kv get vault/unseal_key)
 vault status
 
 # Setup bash profile
