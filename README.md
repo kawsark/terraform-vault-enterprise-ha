@@ -41,7 +41,7 @@ Below are the recommendations from [Vault Production hardening guidelines](https
 - Turn Off Core Dumps: _Pending implementation_.
 - Immutable Upgrades: Yes - Using packer based deployment.
 - Avoid Root Tokens: Up to Administrator.
-- Enable Auditing: _Pending implementation_.
+- Enable Auditing: Yes.
 - Upgrade Frequently: Yes.
 - Configure SELinux / AppArmor: _Pending implementation_.
 - Restrict Storage Access: Yes.

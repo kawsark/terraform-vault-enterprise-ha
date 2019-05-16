@@ -85,6 +85,15 @@ vault status
 
 # Proceed with additional vault configuration:
 export VAULT_TOKEN=$(cat /opt/vault/root_token)
+consul kv put vault/token ${VAULT_TOKEN}
+
+# Enable audit
+touch /var/log/vault_audit.log
+chown vault:vault /var/log/vault_audit.log
+chmod u+rw /var/log/vault_audit.log
+vault audit enable file file_path=/var/log/vault_audit.log
+
+# Add license
 vault write sys/license text=${vault_license}
 vault read -format=json sys/license > /opt/vault/license_status
 echo "Vault license: $(vault read -format=json sys/license)"

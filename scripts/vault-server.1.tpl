@@ -83,6 +83,16 @@ vault_consul_is_up
 sleep 60
 vault status
 
+# Proceed with additional vault configuration:
+export VAULT_TOKEN=$(consul kv get vault/token)
+consul kv delete vault/token
+
+# Enable audit
+touch /var/log/vault_audit.log
+chown vault:vault /var/log/vault_audit.log
+chmod u+rw /var/log/vault_audit.log
+vault audit enable file file_path=/var/log/vault_audit.log
+
 # Setup bash profile
 cat <<EOF >> /home/ubuntu/.bashrc
 export VAULT_ADDR="http://$${local_ip}:8200"
