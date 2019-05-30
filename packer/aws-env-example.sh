@@ -9,7 +9,7 @@ export vault_image_name=demo-vault-ent-base-ubuntu1604
 export consul_image_name=demo-consul-ent-base-ubuntu1604
 export vault_url="<obtain-ent-url-from-hashicorp>"
 export consul_url="<obtain-ent-url-from-hashicorp>"
-export consul_version="1.5.0"
+export consul_version="1.5.1"
 export vault_version="1.1.2"
 
 # Setup tags for Packer image:

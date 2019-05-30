@@ -21,6 +21,7 @@ echo "Creating consul user and directories"
 mkdir -p /etc/consul.d
 useradd --system --home /etc/consul.d --shell /bin/false consul
 mkdir --parents /opt/consul
+mkdir --parents /opt/consul/tls
 chown -R consul:consul /opt/consul
 chown -R consul:consul /etc/consul.d
 chown consul:consul /usr/local/bin/consul

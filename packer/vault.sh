@@ -19,8 +19,10 @@ vault --version
 # Add vault user and make directories
 echo "Creating vault user and directories"
 mkdir -p /etc/vault.d
+mkdir -p /etc/vault.d/plugins
 useradd --system --home /etc/vault.d --shell /bin/false vault
 mkdir --parents /opt/vault
+mkdir --parents /opt/vault/tls
 chown -R vault:vault /opt/vault
 chown -R vault:vault /etc/vault.d
 chown vault:vault /usr/local/bin/vault

@@ -65,6 +65,7 @@ seal "awskms" {
 log_level = "Trace"
 ui = "true"
 api_addr = "http://$${public_ip}:8200"
+plugin_directory = "/etc/vault.d/plugins"
 EOF
 
 # Start vault daemon:
@@ -85,7 +86,6 @@ vault status
 
 # Proceed with additional vault configuration:
 export VAULT_TOKEN=$(consul kv get vault/token)
-consul kv delete vault/token
 
 # Enable audit
 touch /var/log/vault_audit.log
@@ -96,4 +96,7 @@ vault audit enable file file_path=/var/log/vault_audit.log
 # Setup bash profile
 cat <<EOF >> /home/ubuntu/.bashrc
 export VAULT_ADDR="http://$${local_ip}:8200"
+export VAULT_TOKEN="$(consul kv get vault/token)"
 EOF
+
+consul kv delete vault/token

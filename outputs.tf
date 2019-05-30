@@ -17,3 +17,10 @@ output "vault_1" {
 output "lb" {
   value = "${aws_route53_record.vault.name}"
 }
+
+output "vault_0_ip" {
+ value = "${module.n4.public_ip[0]}"
+}
+output "vault_1_ip" {
+ value = "${module.n5.public_ip[0]}"
+}
